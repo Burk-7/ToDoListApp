@@ -4,7 +4,6 @@ using System.Windows.Forms;
 
 namespace ToDoListApp
 {
-    // Yeni gorev eklemek veya mevcut gorevi duzenlemek icin 
     public class TaskForm : Form
     {
         public string TaskName { get; private set; }
@@ -17,14 +16,12 @@ namespace ToDoListApp
         private Button btnSave;
         private Button btnCancel;
 
-        // Yeni gorev modu
         public TaskForm()
         {
             this.TaskName = "";
             BuildUI("Add New Task", DateTime.Now.AddDays(1), Priority.Medium);
         }
 
-        // Duzenleme modu
         public TaskForm(TaskItem task)
         {
             this.TaskName = "";

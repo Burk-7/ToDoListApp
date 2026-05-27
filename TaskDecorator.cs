@@ -2,20 +2,17 @@ using System;
 
 namespace ToDoListApp
 {
-    // DECORATOR PATTERN 
-    // Alt siniflar (UrgentTaskDecorator, OverdueTaskDecorator)
+
     public abstract class TaskDecorator : ITask
     {
-        // Sarilan gorev (protected -> alt siniflar erisebilir)
+
         protected ITask task;
 
-        // Constructor ile sarilan gorev atanir
         public TaskDecorator(ITask task)
         {
             this.task = task;
         }
 
-        // Property'ler sarilan goreve yonlendirilir (delegasyon)
         public int Id
         {
             get { return task.Id; }
@@ -65,7 +62,6 @@ namespace ToDoListApp
         }
     }
 
-    // Somut Dekorator 2: Tarihi gecmis ve tamamlanmamis gorevleri OVERDUE olarak isaretler
     public class OverdueTaskDecorator : TaskDecorator
     {
         public OverdueTaskDecorator(ITask task) : base(task)

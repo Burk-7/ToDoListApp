@@ -2,7 +2,6 @@ using System;
 
 namespace ToDoListApp
 {
-    // Interface: tum gorev turleri bu arayuzu uygular 
     public interface ITask
     {
         int Id { get; }

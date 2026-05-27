@@ -7,7 +7,6 @@ namespace ToDoListApp
 {
     public class MainForm : Form
     {
-        // Singleton orneklere referans
         private TaskManager manager = TaskManager.GetInstance();
         private Logger logger = Logger.GetInstance();
 
@@ -123,7 +122,6 @@ namespace ToDoListApp
             colName.Name = "colName";
             colName.HeaderText = "Task Name";
             colName.Width = 360;
-            // Task Name sutunu kalan bos alani doldurur (sagdaki bosluk kapanir)
             colName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             DataGridViewTextBoxColumn colDate = new DataGridViewTextBoxColumn();
@@ -186,11 +184,7 @@ namespace ToDoListApp
             CompleteSelected();
         }
 
-        // Tabloyu siralama secimine gore yeniler.
-        // Her gorev DECORATOR ile sarilarak metni olusturulur:
-        //   - Tarihi gecmis ise OverdueTaskDecorator -> "[OVERDUE] ..."
-        //   - Yuksek oncelikli + tamamlanmamis ise UrgentTaskDecorator -> "*** URGENT *** ..."
-        // Tamamlanmis gorev satirlarinin uzeri cizgi ile gosterilir (Strikeout font).
+
         public void RefreshTaskList()
         {
             dgvTasks.Rows.Clear();
@@ -201,7 +195,6 @@ namespace ToDoListApp
             {
                 TaskItem item = tasksToShow[i];
 
-                // Decorator zinciri - hocanin istedigi pattern burada calisiyor
                 ITask shown = item;
                 if (item.IsCompleted == false && item.DueDate < DateTime.Now)
                 {
@@ -244,7 +237,6 @@ namespace ToDoListApp
                     statusText
                 );
 
-                // Tamamlanmis gorevlerin uzerine cizgi (Strikeout)
                 if (item.IsCompleted == true)
                 {
                     DataGridViewRow row = dgvTasks.Rows[rowIndex];
@@ -256,7 +248,6 @@ namespace ToDoListApp
             UpdateStatusBar();
         }
 
-        // Siralama secimine gore listeyi dondurur (Delegate + LINQ)
         private List<TaskItem> GetDisplayTasks()
         {
             List<TaskItem> all = manager.GetAllTasks();
@@ -264,17 +255,14 @@ namespace ToDoListApp
 
             if (secim == 1)
             {
-                // Delegate: tarihe gore sirala
                 return manager.SortByDate(all);
             }
             else if (secim == 2)
             {
-                // Delegate: oncelige gore sirala
                 return manager.SortByPriority(all);
             }
             else if (secim == 3)
             {
-                // LINQ: sadece tarihi gecmis gorevler
                 return manager.GetOverdueTasks();
             }
             else
@@ -304,7 +292,6 @@ namespace ToDoListApp
                 + "   Completed: " + done + "   Overdue: " + overdue;
         }
 
-        // Secili gorevin Id'sini dondurur (-1 ise secim yok)
         private int GetSelectedId()
         {
             if (dgvTasks.CurrentRow == null)

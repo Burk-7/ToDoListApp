@@ -11,7 +11,6 @@ namespace ToDoListApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            // Singleton Logger - uygulama baslangicini log.txt dosyasina yazar
             Logger logger = Logger.GetInstance();
             logger.Log("Application started.");
 

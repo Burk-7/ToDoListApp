@@ -5,19 +5,11 @@ using System.Linq;
 
 namespace ToDoListApp
 {
-    // TaskManager
-    // - SINGLETON PATTERN -> GetInstance
-    // - DELEGATE + LAMBDA 
-    // - LINQ-> Where, OrderBy, FirstOrDefault
-    // - EXCEPTION HANDLING -> try/catch
-    // - Dosya okuma/yazma StreamWriter ve StreamReader ile
 
-    // Siralama icin delegate tanimi 
     public delegate List<TaskItem> SortStrategy(List<TaskItem> tasks);
 
     public class TaskManager
     {
-        // Singleton: tek nesne
         private static TaskManager instance = null;
 
         public static TaskManager GetInstance()
@@ -44,7 +36,6 @@ namespace ToDoListApp
             tasks = new List<TaskItem>();
             nextId = 1;
 
-            // Lambda ile delegate ataniyor
             SortByDate = (list) =>
             {
                 return list.OrderBy(t => t.DueDate).ToList();
@@ -58,7 +49,6 @@ namespace ToDoListApp
             LoadFromFile();
         }
 
-        //yeni gorev ekle
         public void AddTask(string name, DateTime dueDate, Priority priority)
         {
             TaskItem task = new TaskItem(nextId, name, dueDate, priority);
@@ -68,13 +58,11 @@ namespace ToDoListApp
             logger.Log("Task added: " + task.Name);
         }
 
-        // READ tum gorevleri dondur
         public List<TaskItem> GetAllTasks()
         {
             return tasks;
         }
 
-        // UPDATE gorevi guncelle
         public bool EditTask(int id, string newName, DateTime newDueDate, Priority newPriority)
         {
             TaskItem task = tasks.FirstOrDefault(t => t.Id == id);
@@ -91,7 +79,6 @@ namespace ToDoListApp
             return true;
         }
 
-        // gorevi sil
         public bool DeleteTask(int id)
         {
             TaskItem task = tasks.FirstOrDefault(t => t.Id == id);
@@ -144,13 +131,11 @@ namespace ToDoListApp
             return tasks.Where(t => t.Priority == priority).ToList();
         }
 
-        // LINQ Tarihi gecmis ve tamamlanmamis gorevler
         public List<TaskItem> GetOverdueTasks()
         {
             return tasks.Where(t => t.IsCompleted == false && t.DueDate < DateTime.Now).ToList();
         }
 
-        // Gorevleri txt dosyasina yaz
         private void SaveToFile()
         {
             try

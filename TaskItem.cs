@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace ToDoListApp
 {
-    // ITask arayuzunu uygulayan gorev sinifi
+
     public class TaskItem : ITask
     {
 
@@ -33,7 +33,6 @@ namespace ToDoListApp
             this.IsCompleted = true;
         }
 
-        // ITask.GetInfo- gorevi metin olarak dondurur
         public string GetInfo()
         {
             string status;
@@ -57,7 +56,6 @@ namespace ToDoListApp
             return GetInfo();
         }
 
-        // Dosyaya yazma / okuma yardimcilari
 
         public string ToFileString()
         {
