@@ -1,0 +1,11 @@
+[14.05.2026 23:07:11] Application started.
+[14.05.2026 23:07:11] Main window opened.
+[14.05.2026 23:07:16] Task added: fsdgfsdfds
+[14.05.2026 23:07:18] Task deleted: #1 - fsdgfsdfds
+[14.05.2026 23:07:19] Application closed.
+[14.05.2026 23:15:06] Application started.
+[14.05.2026 23:15:06] Main window opened.
+[14.05.2026 23:15:10] Application closed.
+[15.05.2026 00:33:54] Application started.
+[15.05.2026 00:33:54] Main window opened.
+[15.05.2026 00:33:55] Application closed.
