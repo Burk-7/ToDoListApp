@@ -1,20 +1,20 @@
 # ToDoListApp
 
-C# ile yazılmış Windows Forms görev takip uygulaması.
-Collegium Da Vinci — Nesne Yönelimli Programlama final projesi.
+A Windows Forms to-do list application written in C#.
+Collegium Da Vinci — Object-Oriented Programming final project.
 
-## Ne yapıyor?
-- Tarih ve öncelikli (Düşük / Orta / Yüksek) görev ekle, düzenle, sil
-- Görevleri tamamlandı olarak işaretle / yeniden aç
-- Süresi geçmiş görevleri görüntüle
-- Tarihe veya önceliğe göre sırala
-- Dosyaya otomatik kaydeder, tüm işlemleri loglar
+## What it does
+- Add, edit, delete tasks with due date and priority (Low / Medium / High)
+- Mark tasks as complete / reopen them
+- View overdue tasks
+- Sort tasks by date or priority
+- Auto-saves to file, logs all actions
 
-## Kullanılan OOP Tasarım Desenleri
+## OOP Patterns Used
 - Singleton (TaskManager, Logger)
 - Decorator (UrgentTaskDecorator, OverdueTaskDecorator)
 - Interface (ITask)
 - Delegate & Lambda (SortStrategy)
-- LINQ (filtreleme, sıralama)
+- LINQ (filtering, sorting)
 
-> Yalnızca Windows'ta çalışır (.NET, WinForms)
+> Windows only (.NET, WinForms)
